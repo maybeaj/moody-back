@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mood.diary.back.posts.mapper.PostsMapper">
+
+    <!-- savePost --> 
+
+    <insert id="savePost"
+            parameterType="mood.diary.back.posts.domain.PostsRequestDTO">
+            INSERT INTO posts(content,mood,date)
+            VALUES (#{content},#{mood},#{date})
+    </insert>
+</mapper>
