@@ -10,4 +10,13 @@
             INSERT INTO posts(content,mood,date)
             VALUES (#{content},#{mood},#{date})
     </insert>
-</mapper>
+
+    <!-- selectPost --> 
+
+    <select id="selectPost"
+            resultType="mood.diary.back.posts.domain.PostsResponseDTO">
+            SELECT id, content, mood, date
+            FROM posts
+    </select>
+
+    </mapper>
