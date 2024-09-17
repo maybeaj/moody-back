@@ -1,6 +1,8 @@
 package mood.diary.back;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +29,29 @@ public class MyBatisApplicationTests {
     }
 
     @Test
-    public void selectTest() {
+    public void getTest() {
         System.out.println("debug mapper >>> " + postsMapper);
-        List<PostsResponseDTO> list = postsMapper.selectPost();
+        List<PostsResponseDTO> list = postsMapper.getPost();
         for(PostsResponseDTO dto : list) {
             System.out.println(dto);
         }
+    }
+
+    @Test
+    public void selectTest() {
+        System.out.println("debug mapper >>>" + postsMapper);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("id", 2);
+        PostsResponseDTO response = postsMapper.selectPost(map);
+        System.out.println("debug >>> select one post" + response);
+    }
+
+    @Test
+    public void deleteTest() {
+        System.out.println("debug mapper >>> " + postsMapper);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("id", 2);
+        postsMapper.deletePost(map);
+        System.out.println("debug >>> delete ok!");
     }
 }

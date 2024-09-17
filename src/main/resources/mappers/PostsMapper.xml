@@ -3,20 +3,49 @@
 
 <mapper namespace="mood.diary.back.posts.mapper.PostsMapper">
 
-    <!-- savePost --> 
+        <!-- savePost --> 
 
-    <insert id="savePost"
-            parameterType="mood.diary.back.posts.domain.PostsRequestDTO">
-            INSERT INTO posts(content,mood,date)
-            VALUES (#{content},#{mood},#{date})
-    </insert>
+        <insert id="savePost"
+                parameterType="mood.diary.back.posts.domain.PostsRequestDTO">
+                INSERT INTO posts(content,mood,date)
+                VALUES (#{content},#{mood},#{date})
+        </insert>
 
-    <!-- selectPost --> 
+        <!-- getPost --> 
 
-    <select id="selectPost"
-            resultType="mood.diary.back.posts.domain.PostsResponseDTO">
-            SELECT id, content, mood, date
-            FROM posts
-    </select>
+        <select id="getPost"
+                resultType="mood.diary.back.posts.domain.PostsResponseDTO">
+                SELECT id, content, mood, date
+                FROM posts
+        </select>
 
-    </mapper>
+
+        <!-- updatePost --> 
+
+        <update id="updatePost"
+                parameterType="mood.diary.back.posts.domain.PostsRequestDTO">
+                UPDATE posts SET CONTENT = #{content}, MOOD = #{mood}, DATE = #{date}
+                WHERE ID = #{id}
+        </update>
+
+        <!-- selectPost --> 
+
+        <select id="selectPost"
+                parameterType="java.util.HashMap"
+                resultType="mood.diary.back.posts.domain.PostsResponseDTO">
+                SELECT id, content, mood, date
+                FROM posts
+                WHERE ID = #{id}
+        </select>
+
+        <!-- deletePost --> 
+
+        <delete id="deletePost"
+                parameterType="java.util.HashMap">
+                DELETE FROM posts
+                WHERE ID = #{id}
+        </delete>        
+        
+        
+        
+        </mapper>

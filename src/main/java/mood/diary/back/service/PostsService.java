@@ -16,4 +16,9 @@ public class PostsService {
         System.out.println("debug >>> service save" + postsMapper);
         postsMapper.savePost(params);
     }
+
+    public void update(PostsRequestDTO params) {
+        System.out.println("debug >>> service update" + postsMapper);
+        postsMapper.updatePost(params);    
+    }
 }

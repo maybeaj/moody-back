@@ -21,4 +21,11 @@ public class ServiceApplicationTests {
         System.out.println("debug >>> save!");
     }
 
+        @Test
+        public void updateService() {
+        System.out.println("debug >>> junit service update " + postsService);
+        PostsRequestDTO request = PostsRequestDTO.builder().id(2).content("hungry").mood("insane").date("2024-09-17").build();
+        postsService.update(request);
+        System.out.println("debug >>> update!");
+    }
 }
