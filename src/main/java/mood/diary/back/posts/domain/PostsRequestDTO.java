@@ -1,19 +1,19 @@
 package mood.diary.back.posts.domain;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Setter
-@Getter
-@ToString
-@Builder
+import lombok.Data;
+
+
+
+@Data
 public class PostsRequestDTO {
     
-    private int id;
+    private Integer id;
+    @jakarta.validation.constraints.NotNull(message = "Content cannot be null")
     private String content;
     private String mood;
     private String date;
     private String image_url;
 }
+
+

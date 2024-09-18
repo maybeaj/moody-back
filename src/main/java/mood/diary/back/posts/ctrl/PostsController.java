@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -58,7 +59,7 @@ public class PostsController {
 
     @PostMapping("/post")
     @Operation(summary = "게시글 작성", description = "게시글을 작성한다.")
-    public ResponseEntity<PostsRequestDTO> save(PostsRequestDTO params) {
+    public ResponseEntity<PostsRequestDTO> save(@RequestBody PostsRequestDTO params) {
         System.out.println("debug>>>> posts controller client path /post");
         System.out.println(">>>>request dto, " + params);
         postsService.save(params);
@@ -66,9 +67,9 @@ public class PostsController {
         return new ResponseEntity<>(params, HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/update/{id}")
     @Operation(summary = "게시글 수정", description = "게시글 키 값(id)을 가지고 수정한다.")
-    public ResponseEntity<Void> update(PostsRequestDTO params) {
+    public ResponseEntity<Void> update(@RequestBody PostsRequestDTO params) {
         System.out.println("debug >>> posts controller client path /update");
         System.out.println(">>>>> request dto, " + params);
         postsService.update(params);
